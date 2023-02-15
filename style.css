@@ -22,6 +22,7 @@ i, svg {
     height: 5rem;
     margin: 1rem 0.5rem;
     cursor: pointer;
+    box-shadow: 4px 4px 10px 3px rgba(0, 0, 0, 0.07);
 }
 
 .kick-pad {
@@ -114,4 +115,13 @@ select {
     font-size: 1.6rem;
     border: none;
     outline: none;
+}
+
+@keyframes playTrack {
+    from{
+        transform: scale(1);
+    }
+    to{
+        transform: scale(1.2);
+    }
 }
