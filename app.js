@@ -2,6 +2,10 @@ class DrumKit {
   constructor() {
     this.pads = document.querySelectorAll(".pad");
     this.playButton = document.querySelector(".play");
+    this.currentKick = "./sounds/kick-classic.wav";
+    this.currentSnare = "./sounds/snare-acoustic01.wav";
+    this.currentHihat = "./sounds/hihat-acoustic01.wav";
+    this.selects = document.querySelectorAll("select");
     this.kickAudio = document.querySelector(".kick-sound");
     this.snareAudio = document.querySelector(".snare-sound");
     this.hihatAudio = document.querySelector(".hihat-sound");
@@ -61,6 +65,23 @@ class DrumKit {
     }
   }
 
+  //Change the sound in the selects
+  changeSound(e) {
+    const selectionName = e.target.name;
+    const selectionValue = e.target.value;
+    switch (selectionName) {
+      case "kick-select":
+        this.kickAudio.src = selectionValue;
+        break;
+      case "snare-select":
+        this.snareAudio.src = selectionValue;
+        break;
+      case "hihat-select":
+        this.hihatAudio.src = selectionValue;
+        break;
+    }
+  }
+
   // A method that adds the active class to the pad on click
   activePad() {
     this.classList.toggle("active");
@@ -70,6 +91,7 @@ class DrumKit {
 // Create an instance of an object
 const drumKit = new DrumKit();
 
+// Event Listeners
 // Loop over the pads and run activePad method for any that is clicked
 drumKit.pads.forEach((pad) => {
   pad.addEventListener("click", drumKit.activePad);
@@ -81,4 +103,10 @@ drumKit.pads.forEach((pad) => {
 drumKit.playButton.addEventListener("click", () => {
   drumKit.updateButton();
   drumKit.start();
+});
+
+drumKit.selects.forEach((select) => {
+  select.addEventListener("change", function (e) {
+    drumKit.changeSound(e);
+  });
 });
