@@ -117,6 +117,28 @@ select {
     outline: none;
 }
 
+.tempo {
+    margin: 3rem;
+    width: 30%;
+}
+
+.tempo-slider {
+    border-radius: 1rem;
+    /* padding: .1rem; */
+    -webkit-appearance: none;
+    margin: 1rem 0;
+    width: 100%;
+    position: relative;
+    background: rgb(88, 88, 88);
+    cursor: pointer;
+}
+
+.tempo p {
+    font-size: 1.5rem;
+    margin-top: 1rem;
+    text-align: center;
+}
+
 .mute.active {
     background: rgb(170, 169, 169);
 }

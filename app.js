@@ -10,6 +10,7 @@ class DrumKit {
     this.snareAudio = document.querySelector(".snare-sound");
     this.hihatAudio = document.querySelector(".hihat-sound");
     this.muteButtons = document.querySelectorAll(".mute");
+    this.tempoSlider = document.querySelector(".tempo-slider");
     this.index = 0;
     this.bpm = 150;
     this.isPlaying = null;
@@ -57,12 +58,14 @@ class DrumKit {
     }
   }
 
-  // Update the button to Stop after 'play' has been clicked
+  // Update the button to Pause if 'play' has been clicked
   updateButton() {
     if (!this.isPlaying) {
       this.playButton.innerText = "Pause";
+      this.playButton.classList.add("active");
     } else {
       this.playButton.innerText = "Play";
+      this.playButton.classList.remove("active");
     }
   }
 
@@ -114,6 +117,23 @@ class DrumKit {
     }
   }
 
+  // Change the tempo & update the text once the slider is moved
+  changeTempo(e) {
+    const tempoText = document.querySelector(".tempo-num");
+    tempoText.innerText = e.target.value;
+  }
+
+  // Get the newly updated bpm, clear the interval and restart
+  updateTempo(e) {
+    this.bpm = e.target.value;
+    clearInterval(this.isPlaying);
+    this.isPlaying = null;
+    const playBtn = document.querySelector(".play");
+    if (playBtn.classList.contains("active")) {
+      this.start();
+    }
+  }
+
   // A method that adds the active class to the pad on click
   activePad() {
     this.classList.toggle("active");
@@ -147,4 +167,12 @@ drumKit.muteButtons.forEach((btn) => {
   btn.addEventListener("click", function (e) {
     drumKit.mute(e);
   });
+});
+
+drumKit.tempoSlider.addEventListener("input", function (e) {
+  drumKit.changeTempo(e);
+});
+
+drumKit.tempoSlider.addEventListener("change", function (e) {
+  drumKit.updateTempo(e);
 });
