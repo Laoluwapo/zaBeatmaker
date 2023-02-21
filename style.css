@@ -152,7 +152,7 @@ select {
     }
 }
 
-@media screen and (max-width: 628px) {
+@media screen and (max-width: 768px) {
     .kick-pad, .snare-pad, .hihat-pad {
         margin: 1rem .5rem 0 0;
     }
