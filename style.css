@@ -151,3 +151,42 @@ select {
         transform: scale(1.2);
     }
 }
+
+@media screen and (max-width: 628px) {
+    .kick-pad, .snare-pad, .hihat-pad {
+        margin: 1rem .5rem 0 0;
+    }
+    .sequencer {
+        display: block;
+        padding: 5rem 0 0 3rem;
+    }
+    .sequencer h1 {
+        text-align: center;
+    }
+    .sequencer h2 {
+        margin-bottom: .5rem;
+    }
+    .kick-track, .snare-track, .hihat-track {
+        display: block;
+        width: 90%;
+    }
+    .controls {
+        display: block;
+        margin: 0;
+    }
+    .play {
+        margin-bottom: 2rem;
+        position: relative;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .tempo {
+        margin: 0;
+        width: 60%;
+        position: relative;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
